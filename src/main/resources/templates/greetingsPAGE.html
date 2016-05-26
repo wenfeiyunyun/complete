@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>List All Order Brief</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="app_orderList.css" rel="stylesheet" />
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="JQuery/jquery-1.12.3.min.js"></script>
+    <script src="app_orderList.js"></script>
+
+</head>
+<body>
+<h2>Form - Order</h2>
+<form action="#" th:action="@{/orderDetailURL}" th:object="${orders_label}" method="post">
+    <div class="container">
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-striped" >
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Total Price</th>
+                        <th>Status</th>
+                        <th>Modified By</th>
+                        <th>Customer ID</th>
+                        <th>Is Invoiced</th>
+                        <th>Payment Method</th>
+                        <th>Comment</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="order : ${orders_label}" th:class="${'order_'+order.id}">
+                        <th scope=""><a th:href="@{/orderDetailURL(id=${order.id})}"><p th:text="${order.id}"/></a></th>
+                        <td th:text="${order.total_price}"></td>
+                        <td th:text="${order.status}"></td>
+                        <td th:text="${order.modified_by}"></td>
+                        <td th:text="${order.customer_id}"></td>
+                        <td th:text="${order.is_invoiced}"></td>
+                        <td th:text="${order.pay_method}"></td>
+                        <td th:text="${order.comment}"></td>
+                        <td class="add"> ADD </td>
+                        <!--<td class="add" th:onclick="'javascript:getOrderDetails(\'' + ${order.id}+'\');'"> ADD </td>-->
+                        <!--<td class="add" onclick="javascript:getOrderDetails(\'' + ${order.id}+'\')"> ADD </td>-->
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="addShippment"> ADD </div>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>

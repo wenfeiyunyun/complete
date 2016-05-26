@@ -1,0 +1,29 @@
+table{
+    border: 1px solid black;
+    table-layout: fixed;
+    width: 200px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    overflow: hidden;
+    width: 100px;
+}
+
+.table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover>th {
+    background-color: #550055;
+    color:#eeeeee;
+}
+
+.table-nowrap {
+    table-layout:fixed;
+}
+
+.table-nowrap td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
