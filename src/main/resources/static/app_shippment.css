@@ -6,6 +6,18 @@
     border: 3px solid #73AD21;
 }
 
+.innerProductDiv{
+    margin: 10px;
+    /*border: 3px solid #73AD21;*/
+    border: 1px solid red;
+    background-color: yellow;
+    padding: 10px 10px 10px 20px; /* t r b l*/
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
 .divSelectionNew{
     border: 3px solid #000000;
 }
@@ -16,7 +28,13 @@
     border: 3px solid #73AD21;
 }
 
-#ontheleft{
+.ontheleft{
+    clear: left;
+    clear: right;
     float: right;
-    border: 3px solid #73AD21;
+    border: 3px solid #886A08;
+}
+
+tbody.orderContent tr td{
+    text-align: center;
 }

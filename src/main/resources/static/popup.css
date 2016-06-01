@@ -1,0 +1,212 @@
+@font-face {
+  font-family: 'ios7-icon';
+/*  src: url("http://ios7-icon-font-demo.herokuapp.com/fonts/ios7-icon.woff") format("woff"), url("http://ios7-icon-font-demo.herokuapp.com/fonts/ios7-icon.ttf") format("ttf");*/
+  font-weight: normal;
+  font-style: normal;
+}
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body {
+  /*padding: 50px;*/
+  font-family: 'Helvetica Neue' !important;
+  font-weight: 300;
+}
+.wrapper {
+  max-width: 500px;
+  margin: 0 auto;
+}
+section {
+  margin-top: 30px;
+}
+section p {
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: auto;
+  margin-left: -200px;
+  margin-top: -150px;
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 5px;
+  z-index: 10;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+}
+.modal.active {
+  display: block;
+}
+.modal header {
+  position: relative;
+}
+.modal h2 {
+  text-align: center;
+}
+.close {
+  position: absolute;
+  top: 3px;
+  right: 0;
+  margin: 0;
+}
+
+.pull-right {
+  float: right;
+}
+.icon {
+  display: inline-block;
+  font-size: inherit;
+  font-family: 'ios7-icon';
+  margin-right: 5px;
+  color: inherit;
+  -webkit-text-rendering: geometricPrecision;
+  -moz-text-rendering: geometricPrecision;
+  -ms-text-rendering: geometricPrecision;
+  -o-text-rendering: geometricPrecision;
+  text-rendering: geometricPrecision;
+}
+
+h1 {
+  font-weight: 100;
+  font-size: 45px;
+  color: #007aff;
+}
+
+h2 {
+  font-weight: 500;
+  font-size: 21px;
+  margin-bottom: 15px;
+}
+
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font: inherit;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  color: #007aff;
+  font-weight: 300;
+  font-size: 16px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  /*  &:last-child {
+      border-color: red;
+      margin-bottom: 0;
+    }*/
+}
+button:hover {
+  text-decoration: underline;
+}
+button.button-border {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 8px;
+  padding: 3px 5px 3px 6px;
+  border: 1px solid #007aff;
+}
+button.button-border:hover {
+  background: #007aff;
+  color: #ffffff;
+  text-decoration: none;
+}
+button.button-success {
+  color: #4dd865;
+  border-color: #4dd865;
+}
+button.button-success:hover {
+  background: #4dd865;
+}
+button.button-error {
+  color: #ff3b30;
+  border-color: #ff3b30;
+}
+button.button-error:hover {
+  background: #ff3b30;
+}
+
+
+
+
+input.formButton:hover {
+  text-decoration: underline;
+}
+input.formButton {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font: inherit;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  color: #007aff;
+  font-weight: 300;
+  font-size: 16px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  /*  &:last-child {
+      border-color: red;
+      margin-bottom: 0;
+    }*/
+}
+input.button-border {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px 12px 8px 12px;
+  border: 1px solid #007aff;
+}
+input.button-border:hover {
+  background: #007aff;
+  color: #ffffff;
+  text-decoration: none;
+}
+button.button-success {
+  color: #4dd865;
+  border-color: #4dd865;
+}
+button.button-success:hover {
+  background: #4dd865;
+}
+button.button-error {
+  color: #ff3b30;
+  border-color: #ff3b30;
+}
+button.button-error:hover {
+  background: #ff3b30;
+}
+
+.popup {
+  max-width: 500px;
+    width:  350px;
+    height: auto;
+    margin: 10px;
+    border: 3px solid #73AD21;
+}
+
+

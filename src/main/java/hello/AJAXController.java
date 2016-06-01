@@ -75,6 +75,15 @@ public class AJAXController {
         return ajaxShippment;
     }
 
+    @RequestMapping(value="/ajaxpPrintShippmentURL") //, method=RequestMethod.GET
+    public Shippment ajaxPrintShippment(@RequestParam(value="shipNo", required=true) String shipNo) {
+        System.out.println("----Listing ONE Shippment with shipNo = "+shipNo+" from ajaxpPrintShippmentURL-----" );
+        Shippment ajaxPrintShippment = shippmentJDBCTemplate.getShippment(shipNo);
+        //model.addAttribute("order_label", order);
+
+        return ajaxPrintShippment;
+    }
+
     @RequestMapping(value="/ajaxShippmentsListURL") //, method=RequestMethod.GET
     public List ajaxShippmentsList(@RequestParam(value="id", required=true) int id) {
         System.out.println("----Listing Shippment with Order ID = " + id + " from ajaxShippmentsListURL-----");

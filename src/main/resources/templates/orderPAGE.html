@@ -6,15 +6,26 @@
 
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="app_shippment.css" rel="stylesheet" />
+    <link href="popup.css"         rel="stylesheet" />
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="JQuery/jquery-1.12.3.min.js"></script>
+    <!--<script src="JQuery/jquery.modal.js"></script>-->
     <script src="app_shippment.js" ></script>
 
     <script th:inline="javascript">
     /*<![CDATA[*/
         var message = [[${order_label.total_price}]];
         var order   = [[${order_label}]];
+
         var trans   = [[${transactions_label}]];
+        var size    = trans.length;
+        trans[size] = trans[0];
+        trans[size].product_name = "Weight";
+        trans[size].quantity = "0";
+        trans[size].product_id ="999";
+        trans[size].deal_price = "0";
+        trans[size].id = "kg";
+
         <!--alert(message);-->
         <!--console.log(message);-->
     /*]]>*/
@@ -22,7 +33,7 @@
 </head>
 
 <body>
-	<h1>Order Page</h1>
+	<h1>Order Page ----</h1>
     <form class="shippment" action="#" th:action="@{/resultURL}" method="post">
     	<p>Id: <input type="text" th:field="${order_label.id}" /></p>
         <!--<p>total_price: <input type="text" th:field="${order_label.total_price}" /></p>-->
@@ -46,13 +57,19 @@
 
         <br/><br/>
 
+        <div>
+            <input type="submit" class="formButton button-border" value="Submit" />
+            <input type="reset"  class="formButton button-border ontheright" value="Reset" />
+        </div>
         <table border="1" id="mtable">
             <!--<input id="row" placeholder="Enter Item Name" onkeypress='stopSumbitOnEter()'/> <button type='button' id="irow" >Add New Product    </button><br/>-->
-            <input type="submit" value="Submit" /> <input type="reset" value="Reset" /><br/>
+            <br/>
             <!--<input type="button" value="Send" onclick="JavaScript:return Validator();" />-->
-            <input id="col" size= "25" placeholder="Scan Shippment Barcode Here ..." onkeypress='stopSumbitOnEter()'/> <button type='button' id="icol" >Add Shippment Order</button>
+            <input id="col" size= "25" placeholder="Scan Shippment Barcode Here ..." onkeypress='stopSumbitOnEter()'/>
+            <button type='button' class="button-border" id="icol" >Add Shippment Order</button>
+            <br/><br/>
             <thead><tr><td>ID</td><td>Product Name</td><td>Unit Price</td><td>QTY</td><td>Assigned</td></tr></thead>
-            <tbody>
+            <tbody class="orderContent">
                 <tr th:id="${transaction.id}" th:each="transaction : ${transactions_label}">
                     <td><p th:text="${transaction.id}"/></td>
                     <td><p th:text="${transaction.product_name}"/></td>
@@ -60,36 +77,27 @@
                     <td><p th:text="${transaction.quantity}"/></td>
                     <td><p class="assinged">0</p></td>
                 </tr>
+                <tr><td><p>999</p></td><td><p>Weight</p></td><td><p>null</p></td><td><p>0</p></td><td><p class="assinged">0</p></td></tr>
             </tbody>
-        </table><br/><br/>
-
-
-        <Table border="1">
-<!--            <tr>
-                <th>ID</th>
-                <th>Product Name</th>
-                <th>Quantity</th>
-                <th>Deal Price</th>
-            </tr>
-            <tr th:each="transaction : ${transactions_label}">
-                <td><p th:text="${transaction.id}"/></td>
-                <td><p th:text="${transaction.product_name}"/></td>
-                <td><p th:text="${transaction.deal_price}"/></td>
-                <td><span th:text="${transaction.quantity}"/> / <span id="assinged">0</span></td>
-                &lt;!&ndash;&lt;!&ndash;<td  th:rowspan="${order_label.numberOfCategories}"><button type="butoon" class="addShippment" onclick="return false;">Add Shippment</button></td>&ndash;&gt;&ndash;&gt;
-            </tr>-->
-            <tr>
-                <td><button type="butoon" class="addShippmentButton" onclick="return false;">Add Shippment</button></td>
-                <td><button type="butoon" class="addProductButton"   onclick="return false;">Add Product  </button></td>
-            </tr>
-        </Table>
-        <br/>
-        <div class="orderShippment ontheright"></div>
-        <!--<div class="ontheleft"></div>-->
-        <!-- -->
-        <br/>
-
-
+        </table><br/>
     </form>
+
+<!--    <button type="button" class="addShippmentButton button-border" onclick="return false;">Add Shippment</button>
+    <button type="button" class="addProductButton button-border"   onclick="return false;">Add Product  </button>-->
+    <div class="orderShippment ontheright"></div>
+
+    <div class="wrapper">
+        <div class="modal">
+            <header>
+                <h2 id="shipmentNo">Title</h2>
+                <button class="close toggleModal">Close</button>
+            </header>
+            <section class="popup">
+                <p>Lorem ipsum dolor sit amet, consectetur amis at adipisicing elit. Maiores quaerat est officia aut nam amet ipsum natus corporis adipisci cupiditate voluptas unde totam quae vel error neque odio id etas lasf reiciendis.</p>
+            </section>
+            <button class="button-border button-success" onclick="PopupToPrint()"><span class="icon"></span> Print</button>
+            <button class="button-border button-error pull-right"><span class="icon"></span>Lock</button>
+        </div>
+    </div>
 </body>
 </html>
