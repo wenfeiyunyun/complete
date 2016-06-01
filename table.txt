@@ -1,0 +1,63 @@
+CREATE TABLE `webpos_order` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`created_by` VARCHAR(255) NOT NULL,
+	`created_time` DATETIME NOT NULL,
+	`modified_by` VARCHAR(255) NULL DEFAULT NULL,
+	`comment` LONGTEXT NULL,
+	`customer_comment` LONGTEXT NULL,
+	`customer_id` INT(11) NULL DEFAULT NULL,
+	`modified_time` DATETIME NULL,
+	`status` VARCHAR(20) NOT NULL,
+	`total_price` DOUBLE NOT NULL,
+	`pay_method` VARCHAR(10) NOT NULL,
+	`is_invoiced` TINYINT(1) NOT NULL,
+	`card_price` DOUBLE NULL,
+	PRIMARY KEY (`id`),
+	INDEX `webpos_order_cb24373b` (`customer_id`),
+	CONSTRAINT `webpos_order_customer_id_59e32b37_fk_webpos_customer_id` FOREIGN KEY (`customer_id`) REFERENCES `webpos_customer` (`id`)
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=119388
+;
+
+
+CREATE TABLE `webpos_transaction` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`quantity` DOUBLE NULL DEFAULT NULL,
+	`created_by` VARCHAR(255) NOT NULL,
+	`created_time` DATETIME NOT NULL,
+	`modified_by` VARCHAR(255) NULL DEFAULT NULL,
+	`order_id` INT(11) NOT NULL,
+	`product_id` INT(11) NOT NULL,
+	`modified_time` DATETIME NULL,
+	`deal_price` DOUBLE NOT NULL,
+	PRIMARY KEY (`id`),
+	INDEX `webpos_transaction_69dfcb07` (`order_id`),
+	INDEX `webpos_transaction_9bea82de` (`product_id`),
+	CONSTRAINT `webpos_transaction_order_id_5957297c_fk_webpos_order_id` FOREIGN KEY (`order_id`) REFERENCES `webpos_order` (`id`),
+	CONSTRAINT `webpos_transaction_product_id_5c6b222b_fk_webpos_product_id` FOREIGN KEY (`product_id`) REFERENCES `webpos_product` (`id`)
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=344130
+;
+
+CREATE TABLE `webpos_shippment` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`shipNo` VARCHAR(30) NOT NULL,
+	`weight` FLOAT NULL DEFAULT NULL,
+	`products` VARCHAR(255) NOT NULL,
+	`consumer_id` INT(11) NULL DEFAULT NULL,
+	`customer_id` INT(11) NULL DEFAULT NULL,
+	`modified_by` VARCHAR(30) NULL DEFAULT NULL,
+	`modified_time` DATETIME NULL DEFAULT NULL,
+	`enabled` TINYINT(4) NULL DEFAULT NULL,
+	`order_id` INT(11) NOT NULL,
+	PRIMARY KEY (`id`)
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=123
+;
+
