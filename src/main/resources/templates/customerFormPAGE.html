@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <title>Getting Started: Handling Form Submission</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+   <link href="customer.css"                    rel="stylesheet" />
+   <script src="bootstrap/js/bootstrap.min.js"                   />
+   <script src="JQuery/jquery-1.12.3.min.js"                     />
+
+   <script src="JQuery/jquery.autocomplete.min.js"></script>
+   <script src="JQuery/jquery.popupWindow.js"></script>
+
+</head>
+<body>
+<div class="customerDiv">
+   <form id="customerForm" class="form-style-9" action="#" th:action="@{/customerFormURL}" th:object="${customer}" method="post">
+      <!--
+         private int  id;
+         private String ;
+         private String ;
+         private String ;
+         private String comment;
+      -->
+      <ul>
+         <li>
+            <input type="text" th:field="*{name}" class="field-style field-split align-left" placeholder="Name" />
+            <input type="hidden" th:field="*{id}" class="field-style field-split align-left" placeholder="id" />
+
+         </li>
+         <li>
+            <input type="text" th:field="*{wechat_id}" class="field-style field-split align-left" placeholder="Wechat ID" />
+            <input type="text" th:field="*{phone}" class="field-style field-split align-left" placeholder="Phone" />
+         </li>
+         <li>
+            <input type="text" th:field="*{personal_id}" class="field-style field-split align-left" placeholder="Personal Identity" />
+         </li>
+         <li>
+            <input type="text" th:field="*{address}" class="field-style field-split align-left" placeholder="Address" />
+         </li>
+         <li>
+            <input type="text" th:field="*{comment}" class="field-style field-split align-left" placeholder="Comment" />
+         </li>
+         <li>
+            <textarea rows="15" cols="20" />
+         </li>
+         <li>
+            <input type="submit" id="customerSubmit" value="Submit" />
+            <input type="checkbox" id="locked" /> locked
+         </li>
+      </ul>
+   </form>
+</div>
+</body>
+<script th:inline="javascript">
+   /*<![CDATA[*/
+      if([[${customerInputDisabled}]]) {
+         $("#customerForm :input").prop("disabled", true);
+         $("#customerForm  #locked").prop("disabled", false);
+         $("#customerForm  #locked").prop("checked", true);
+         $("#customerForm  #customerSubmit").val("Update");
+      }
+   /*]]>*/
+ </script>
+<script src="app_customer.js"></script>;'
+</html>

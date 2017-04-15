@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>List All Order Brief</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href=              "app_shippment.css" rel="stylesheet" />
+    <link href=                      "popup.css" rel="stylesheet" />
+    <!--<link href="customer.css"                    rel="stylesheet" />-->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href=                                "http://resources/demos/style.css" />
+    <link href="app_shippmentList.css" rel="stylesheet" />
+
+
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="JQuery/jquery-1.12.3.min.js"></script>
+        <script src="JQuery/jquery-barcode.min.js"></script>
+        <script src="app_shippmentList.js"></script>
+        <!--    <style>
+                .lastTD th{
+                    white-space: nowrap;
+                    width: 100%;
+                }
+            </style>-->
+        <script src="JQuery/jquery.autocomplete.min.js"></script>
+        <script src=     "JQuery/jquery.popupWindow.js"></script>
+        <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+</head>
+<body>
+<!--            <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />-->
+<h2>
+    物流运单 ：
+    <a href="/shippmentsWithProductTypeURL?productType=奶粉">奶粉</a>
+    <a href="/shippmentsWithProductTypeURL?productType=杂物">杂物</a>
+    <a href="/shippmentsWithProductTypeURL?productType=鞋子">鞋子</a>
+</h2>
+
+<form action="#" th:action="@{/orderDetailURL}" th:object="${shippments_label}" method="post">
+    <div class="row">
+        <div class="container">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Slip</th>
+                        <th><input type="checkbox"/></th>
+                        <th>Order</th>
+                        <th>Type</th>
+                        <!--<th width="5">ID</th>-->
+                        <th>ShipNo</th>
+                        <th>Print</th>
+                        <th>Weight</th>
+                        <th>Customer</th>
+                        <th>Consumer</th>
+                        <th>Address</th>
+                        <th>Time</th>
+                        <th colspan="4">Products</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="shippment : ${shippments_label}" th:class="${'shippment_'+shippment.id}">
+                        <td  width="5" class="" th:onclick="'javascript:popupShipmentDetails(\'' + ${shippment.shipNo}+'\');'"> Print </td>
+                        <td  width="5"><input type="checkbox" name="shippmentSlip" th:value="${shippment.shipNo}" /></td>
+                        <td  width="5" scope=""><a th:href="@{/orderDetailURL(id=${shippment.order_id})}"><p th:text="${shippment.order_id}"/></a></td>
+                        <!--<td  width="5"  th:text="${shippment.id}"></td>-->
+                        <td  width="5"  th:text="${shippment.productType}"></td>
+                        <td  width="5"  th:text="${shippment.shipNo}"></td>
+                        <td  width="5"  th:text="${shippment.printTimes}"></td>
+                        <td  width="5"  th:text="${shippment.weight}"></td>
+                        <td  width="10"  th:text="${shippment.customer_id}"></td>
+                        <td  width="10"  th:text="${shippment.consumer_id}"></td>
+                        <td  width="15"  th:text="${shippment.address_id}"></td>
+                        <td  width="10"  th:text="${shippment.modified_time}"></td>
+                        <td  width="30"  th:text="${shippment.products}" colspan="4" class="lastTD"></td>
+                        <!--<td class="add" th:onclick="'javascript:getOrderDetails(\'' + ${order.id}+'\');'"> ADD </td>-->
+                        <!--<td class="add" onclick="javascript:getOrderDetails(\'' + ${order.id}+'\')"> ADD </td>-->
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="wrapper">
+    <div class="modal">
+        <header>
+            <h2 id="shipmentNo">Title</h2>
+            <button class="close toggleModal">Close</button>
+        </header>
+        <section class="popup">
+            <p>Lorem ipsum dolor sit amet, consectetur amis at adipisicing elit. Maiores quaerat est officia aut nam amet ipsum natus corporis adipisci cupiditate voluptas unde totam quae vel error neque odio id etas lasf reiciendis.</p>
+        </section>
+        <button class="button-border button-success" onclick="PopupToPrint()"><span class="icon"></span> Print</button>
+        <button class="button-border button-error pull-right"><span class="icon"></span>Lock</button>
+    </div>
+</div>
+</body>
+</html>

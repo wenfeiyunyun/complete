@@ -8,7 +8,7 @@ CREATE TABLE `webpos_order` (
 	`customer_id` INT(11) NULL DEFAULT NULL,
 	`modified_time` DATETIME NULL,
 	`status` VARCHAR(20) NOT NULL,
-	`total_price` DOUBLE NOT NULL,
+	`total` DOUBLE NOT NULL,
 	`pay_method` VARCHAR(10) NOT NULL,
 	`is_invoiced` TINYINT(1) NOT NULL,
 	`card_price` DOUBLE NULL,
@@ -18,9 +18,7 @@ CREATE TABLE `webpos_order` (
 )
 COLLATE='latin1_swedish_ci'
 ENGINE=InnoDB
-AUTO_INCREMENT=119388
-;
-
+AUTO_INCREMENT=119388;
 
 CREATE TABLE `webpos_transaction` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -40,7 +38,40 @@ CREATE TABLE `webpos_transaction` (
 )
 COLLATE='latin1_swedish_ci'
 ENGINE=InnoDB
-AUTO_INCREMENT=344130
+AUTO_INCREMENT=344130;
+
+CREATE TABLE `webpos_shipOrder` (
+	`id` INT(11) NOT NULL,
+	`created_by` VARCHAR(255) NOT NULL,
+	`created_time` DATETIME NOT NULL,
+	`modified_by` VARCHAR(255) NULL DEFAULT NULL,
+	`comment` LONGTEXT NULL,
+	`customer_comment` LONGTEXT NULL,
+	`customer_id` INT(11) NULL DEFAULT NULL,
+	`customer_name` VARCHAR(125) NULL DEFAULT NULL,
+	`wechat_id` INT(11) NULL DEFAULT NULL,
+	`modified_time` DATETIME NULL,
+	`status` VARCHAR(20) NOT NULL,
+	`total` DOUBLE NOT NULL,
+	`pay_method` VARCHAR(10) NOT NULL,
+	`is_invoiced` TINYINT(1) NOT NULL,
+	`card_price` DOUBLE NULL,
+	PRIMARY KEY (`id`),
+)
+ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+CREATE TABLE `webpos_buyer` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(30) NOT NULL,
+	`phone` VARCHAR(30) NOT NULL,
+	`personal_id` VARCHAR(30) NOT NULL,
+	`comment` VARCHAR(255) NOT NULL,
+	`wechat_id` VARCHAR(30) NOT NULL,
+	`address` VARCHAR(125) NOT NULL,
+	PRIMARY KEY (`id`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB DEFAULT CHARSET=utf8
 ;
 
 CREATE TABLE `webpos_shippment` (
@@ -56,8 +87,56 @@ CREATE TABLE `webpos_shippment` (
 	`order_id` INT(11) NOT NULL,
 	PRIMARY KEY (`id`)
 )
-COLLATE='latin1_swedish_ci'
-ENGINE=InnoDB
-AUTO_INCREMENT=123
+COLLATE='utf8_bin'
+ENGINE=InnoDB DEFAULT CHARSET=utf8
 ;
 
+CREATE TABLE `webpos_consumer` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(30) NOT NULL,
+	`phone` VARCHAR(30) NULL DEFAULT NULL,
+	`personal_id` VARCHAR(30) NULL DEFAULT NULL,
+	`comment` VARCHAR(255) NULL DEFAULT NULL,
+	`wechat_id` VARCHAR(30) NULL DEFAULT NULL,
+	`customer_id` INT(11) NOT NULL,
+	PRIMARY KEY (`id`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=2
+;webpos_brandwebpos_consumer
+
+CREATE TABLE `webpos_address` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`address` VARCHAR(255) NOT NULL,
+	`consumer_id` INT(11) NOT NULL,
+	PRIMARY KEY (`id`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
+
+CREATE TABLE `webpos_wechatRefund` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+	`amount` INT(6) NULL DEFAULT NULL,
+	`productID` INT(6) NULL DEFAULT NULL,
+	`productQTY` INT(4) NULL DEFAULT NULL,
+	`refund_id` VARCHAR(50) NULL DEFAULT NULL,
+	`partner_refund_id` VARCHAR(50) NULL DEFAULT NULL,
+	`modified_by` VARCHAR(50) NULL DEFAULT NULL,
+	`modified_time` DATETIME NULL DEFAULT NULL,
+	PRIMARY KEY (`id`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+
+////////////////////////////////////////////////////
+INSERT INTO webpos_wechatRefund (
+amount,
+productID,
+productQTY,
+refund_id,
+partner_refund_id,
+modified_by,
+modified_time) VALUES ();
+////////////////////////////////////////////////////

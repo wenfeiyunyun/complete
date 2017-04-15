@@ -57,5 +57,8 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.2.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:4.2.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.38" level="project" />
+    <orderEntry type="library" name="json-20160810" level="project" />
+    <orderEntry type="library" name="httpclient-4.5.3" level="project" />
+    <orderEntry type="library" name="httpcore-4.4.6" level="project" />
   </component>
 </module>

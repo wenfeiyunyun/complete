@@ -15,5 +15,5 @@ public interface ShippmentDao {
      */
     public Shippment getShippment(String shipNo);
     public List<Shippment> getListShippments(int shippment_id);
-    public int insertNewShippment(String shipNo, float weight, String products, int consumer_id, int customer_id, String modifiedBy, Date ModifiedTime, int enabled, int order_id);
+    public int insertNewShippment(String shipNo, String weight, String products, String consumer_id, String customer_id, String address_id, String modifiedBy, Date ModifiedTime, int enabled, int order_id, int printTimes, String productType, String comments, String carrierTaken);
 }

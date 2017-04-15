@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <style>
+		#video  { border: 1px solid #ccc; display: block; }
+		#canvas { border: 1px solid #ccc; display: block; }
+	</style>
+   <script src="JQuery/jquery-1.12.3.min.js"                     />
+   <script src="camera.js"                                       />
+</head>
+<body>
+
+<!-- main content column -->
+<main id="main"><!--CONTENT-->
+   <div class="demo-wrapper">
+       <button id="snap" style="height:150px;width:720px;" class="sexyButton"><p><font size="7">Take Photo</font></p></button>
+      <!--
+          Ideally these elements aren't created until it's confirmed that the
+          client supports video/camera, but for the sake of illustrating the
+          elements involved, they are created with markup (not JavaScript)
+      -->
+      <div>
+         <video id="video" width="720" height="540" control="autoplay" style="float:left;"></video>
+         <canvas id="canvas" width="720" height="540" style="float:left;"></canvas>
+      </div>
+
+      <!--<canvas id="canvas" width="640" height="480"></canvas>-->
+   </div>
+</main>
+</body>
+</html>

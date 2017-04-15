@@ -7,10 +7,10 @@
 <body>
 	<h1>Result two two</h1>
     <p th:text="'id: ' + ${order_label.id}" />
-    <p th:text="'content: ' + ${order_label.total_price}" />
+    <p th:text="'content: ' + ${order_label.total}" />
     =================================================
     <p th:text="'id: ' + ${order_label_other.id}" />
-    <p th:text="'total_price: ' + ${order_label_other.total_price}" />
+    <p th:text="'total: ' + ${order_label_other.total}" />
     <p>status: <input type="text" th:field="${order_label_other.status}" /></p>
     <p>created_by: <input type="text" th:field="${order_label_other.created_by}" /></p>
     <p>modified_by: <input type="text" th:field="${order_label_other.modified_by}" /></p>

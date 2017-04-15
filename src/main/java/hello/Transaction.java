@@ -9,26 +9,23 @@ import java.util.*;
  */
 public class Transaction {
     private int id;
+    private int order_id;
+    private int product_id;
+    private String name;
     private int quantity;
+    private double deal_price;
+
     private String created_by;
     private Date created_time;
     private String modified_by;
-    private int order_id;
-    private int product_id;
     private Date modified_time;
-    private double deal_price;
-    private String product_name;
 
-    public String getProduct_name(int id) {
-        return product_name;
+    public String getName() {
+        return name;
     }
 
-    public String getProduct_name() {
-        return product_name;
-    }
-
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getId() {

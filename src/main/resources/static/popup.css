@@ -28,10 +28,10 @@ section p {
 .modal {
   display: none;
   position: fixed;
-  top: 50%;
+  top: 30%;
   left: 50%;
-  width: 400px;
-  height: auto;
+  width: 445px;
+  height: 730px;
   margin-left: -200px;
   margin-top: -150px;
   background-color: #ffffff;
@@ -120,6 +120,7 @@ button.button-border {
   border-radius: 8px;
   padding: 3px 5px 3px 6px;
   border: 1px solid #007aff;
+  margin: 6px 10px 0px 6px;
 }
 button.button-border:hover {
   background: #007aff;
@@ -140,9 +141,6 @@ button.button-error {
 button.button-error:hover {
   background: #ff3b30;
 }
-
-
-
 
 input.formButton:hover {
   text-decoration: underline;
@@ -201,12 +199,37 @@ button.button-error:hover {
   background: #ff3b30;
 }
 
+.inputCol {
+    margin: 0px 0px 0px 14px;
+}
+
 .popup {
   max-width: 500px;
     width:  350px;
     height: auto;
     margin: 10px;
-    border: 3px solid #73AD21;
+    /*border: 3px solid #73AD21;*/
 }
 
-
+.barcode {
+   float:left;/**/
+    margin-top: 10px;
+}
+.divSelection_popup{
+    float: left;
+    width:  385px;
+    height: 550px;
+    margin: 0px 0px 0px -5px;
+    border: 2px solid #73AD21;
+}
+.popup_img {
+    float:right;
+    margin: 20px 10px 0px 0px;
+}
+.popTable{
+    width:  385px;
+    border: 1px solid black;
+}
+.popSplitor{
+    hight: 5px;
+}

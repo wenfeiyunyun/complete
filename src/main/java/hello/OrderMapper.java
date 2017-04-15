@@ -12,19 +12,28 @@ import org.springframework.jdbc.core.RowMapper;
 public class OrderMapper implements RowMapper<Order> {
     public Order mapRow(ResultSet rs, int rowNum) throws SQLException {
         Order order = new Order();
-        order.setId(rs.getInt("id"));
-        order.setTotal_price(rs.getDouble("total_price"));
-        order.setCreated_by(rs.getString("created_by"));
-        order.setModified_by(rs.getString("modified_by"));
-        order.setModified_time(rs.getDate("modified_time"));
+        order.setId(rs.getInt("order_id"));
+        order.setTotal(rs.getDouble("total"));
+        order.setCreated_by(String.valueOf(rs.getInt("customer_id")));
+        order.setModified_by(String.valueOf(rs.getInt("customer_id")));
+        order.setFirstname(rs.getString("firstname"));
+        order.setLastname(rs.getString("lastname"));
+        order.setCustomer_name(rs.getString("firstname")+rs.getString("lastname"));
+        order.setModified_time(rs.getDate("date_modified"));
         order.setComment(rs.getString("comment"));
-        order.setCustomer_comment(rs.getString("customer_comment"));
+        order.setCustomer_comment(rs.getString("comment"));
         order.setCustomer_id(rs.getInt("customer_id"));
-        order.setCreated_time(rs.getDate("created_time"));
-        order.setStatus(rs.getString("status"));
-        order.setPay_method(rs.getString("pay_method"));
-        order.setIs_invoiced(rs.getBoolean("is_invoiced"));
-        order.setCard_price(rs.getString("card_price"));
+        order.setCreated_time(rs.getDate("date_added"));
+        order.setStatus(String.valueOf(rs.getInt("order_status_id")));
+        order.setPay_method(rs.getString("payment_code"));
+        order.setIs_invoiced(rs.getBoolean(1));
+        //order.setCard_price(rs.getString("card_price"));
+        try {
+            order.setShipperName(rs.getString("firstname") + " " + rs.getString("lastname") );
+            order.setWechat_id(rs.getString("wechat_id"));
+        }catch(Exception  e) {
+
+        }
         return order;
     }
 }

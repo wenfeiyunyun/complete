@@ -21,7 +21,7 @@ public class TransactionJDBCTemplate implements TransactionDao {
     private static final Logger log = LoggerFactory.getLogger(Application.class);
 
     public List<Transaction> getListTransactions(int order_id) {
-        String SQL = "select * from webpos_transaction where order_id = ?";
+        String SQL = "select * from oc_order_product where order_id = ?";
 
         List <Transaction> transactions = jdbcTemplateObject.query(SQL, new Object[] {order_id},
                 new TransactionMapper());

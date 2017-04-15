@@ -17,12 +17,17 @@ public class ShippmentMapper implements RowMapper<Shippment> {
         shippment.setModified_by(rs.getString("modified_by"));
         shippment.setModified_time(rs.getDate("modified_time"));
         shippment.setCustomer_id(rs.getInt("customer_id"));
-        shippment.setConsumer_id(rs.getInt("consumer_id"));
+        shippment.setConsumer_id(rs.getString("consumer_id"));
         shippment.setOrder_id(rs.getInt("order_id"));
         shippment.setShipNo(rs.getString("shipNo"));
         shippment.setWeight(rs.getFloat("weight"));
         shippment.setProducts(rs.getString("products"));
         shippment.setEnabled(rs.getInt("enabled"));
+        shippment.setAddress_id(rs.getString("address_id"));
+        shippment.setPrintTimes(rs.getInt("printTimes"));
+        shippment.setProductType(rs.getString("productType"));
+        shippment.setComments(rs.getString("comments"));
+        shippment.setCarrierTaken(rs.getString("carrierTaken"));
         //shippment.setCreated_by(rs.getString("created_by"));
         //shippment.setCreated_time(rs.getDate("created_time"));
         return shippment;

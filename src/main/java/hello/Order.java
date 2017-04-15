@@ -13,12 +13,24 @@ public class Order {
   private int customer_id;
   private Date modified_time;
   private String status;
-  private double total_price;
+  private double total;
   private String pay_method;
   private boolean is_invoiced;
   private String card_price;
   private int numberOfCategories;
+  private String firstname;
+  private String lastname;
+  private String customer_name;
+  private String shipperName;
+  private String wechat_id;
 
+  public String getWechat_id() {
+    return wechat_id;
+  }
+
+  public void setWechat_id(String wechat_id) {
+    this.wechat_id = wechat_id;
+  }
 
   public int getNumberOfCategories() {
     return numberOfCategories;
@@ -100,12 +112,12 @@ public class Order {
     this.status = status;
   }
 
-  public double getTotal_price() {
-    return total_price;
+  public double getTotal() {
+    return total;
   }
 
-  public void setTotal_price(double total_price) {
-    this.total_price = total_price;
+  public void setTotal(double total) {
+    this.total = total;
   }
 
   public String getPay_method() {
@@ -134,4 +146,36 @@ public class Order {
   public void setCard_price(String card_price) {
     this.card_price = card_price;
   }
+
+  public String getShipperName() {
+    return shipperName;
+  }
+
+  public void setShipperName(String shipperName) {
+    this.shipperName = shipperName;
+  }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getCustomer_name() {
+        return customer_name;
+    }
+
+    public void setCustomer_name(String customer_name) {
+        this.customer_name = customer_name;
+    }
 }

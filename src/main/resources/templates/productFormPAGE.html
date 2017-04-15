@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <title>Getting Started: Handling Form Submission</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+   <link href="product.css"                    rel="stylesheet" />
+   <script src="bootstrap/js/bootstrap.min.js"                   />
+   <script src="JQuery/jquery-1.12.3.min.js"                     />
+
+   <script src="JQuery/jquery.autocomplete.min.js"></script>
+   <script src="JQuery/jquery.popupWindow.js"></script>
+
+</head>
+<body>
+<div class="productDiv">
+   <form id="searchProductForm" class="form-style-9" action="#" th:action="@{/productFormURL}" th:object="${product}" method="post">
+      <ul>
+         <li>
+            <input type="text" name="barcode" id="product_name" class="field-style field-split align-left" placeholder="Barcode" autofocus="true" />
+         </li>
+         <li>
+            <input type="text" name="product_name" id="product_name" class="field-style field-split align-left" placeholder="Product Name" />
+         </li>
+      </ul>
+      <input type="submit" style="display:none"/>
+   </form>
+
+   <form id="productForm" class="form-style-9" action="#" th:action="@{/productFormURL}" th:object="${product}" method="post">
+      <ul th:if="*{id} > 0">
+         <li>
+            <p class="field-style field-split align-left">Product ID :   <span id="address_id" th:text="*{id}" /></p>
+            <p class="field-style field-split align-left">Barcode    :   <span id="address_id" th:text="*{barcode}" /></p>
+            <p class="">Name       :   <input type="text" th:field="*{product_name}"    class="field-style field-split align-left" size="35" placeholder="Product Name" /></p><br/>
+            <p class="">Sell Price :   <input type="text" th:field="*{selling_price}"   class="field-style field-split align-left" placeholder="Selling Price" /></p>
+            <p class="">Inventory  :   <input type="text" th:field="*{total_inventory}" class="field-style field-split align-left" placeholder="Total Inventory" /></p>
+            <input type="hidden" th:field="*{id}" class="field-style field-split align-left" placeholder="id" />
+            <input type="hidden" th:field="*{barcode}" class="field-style field-split align-left" placeholder="barcode" />
+            <input type="hidden" th:field="*{category_id}" class="field-style field-split align-left" placeholder="Category ID" />
+            <input type="hidden" th:field="*{brand_id}" class="field-style field-split align-left" placeholder="Brand ID" />
+         </li>
+   <!--  <li>
+            <textarea rows="25" cols="20productSubmit" th:field="*{address}" class="field-style field-split align-left" size="30" placeholder="address" />
+         </li>-->
+         <li>
+            <input type="submit" id="productSubmit" value="Submit" />
+            <input type="checkbox" id="locked" /> locked
+         </li>
+      </ul>
+   </form>
+</div>
+</body>
+<script th:inline="javascript">
+   /*<![CDATA[*/
+      if([[${productInputDisabled}]]) {
+         $("#productForm :input").prop("disabled", true);
+         $("#productForm  #locked").prop("disabled", false);
+         $("#productForm  #locked").prop("checked", true);
+         $("#productForm  #productSubmit").val("Update");
+      }
+   /*]]>*/
+
+    $(document).ready(function() {
+      $("#barcode").click(function(){
+         $("#product_name").val("");
+      });
+      $("#product_name").click(function(){
+         $("#barcode").val("");
+      });
+    });
+ </script>
+<script src="app_customer.js"></script>
+</html>
